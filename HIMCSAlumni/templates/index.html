@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% load static %}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>College Alumni | Home</title>
+  <link rel="stylesheet" href="{% static 'style.css' %}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Header Section -->
+  <header class="navbar">
+    <div class="logo">
+         <a href="/index" class="logo-link">
+        <img src="{% static 'WhatsApp_Image_2025-06-06_at_23.23.16_d3145ba0-removebg-preview.png'%}" alt="" >
+        </a>
+      <h2>HIMCS Alumni</h2>
+    </div>
+
+    <!-- Navigation Links -->
+    <nav class="nav-links">
+      <a href="/index">Home</a>
+      <a href="/about">About</a>
+      <a href="course.html">Courses</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="contact.html">Contact</a>
+      <a href="/login" class="btn login">Login</a>
+      <a href="/register" class="btn register">Register</a>
+    </nav>
+
+    <!-- Mobile Menu Icon -->
+    <div class="menu-toggle" id="menu-toggle">
+      ☰
+    </div>
+  </header>
+
+   <!-- ===== Hero Section ===== -->
+  <section class="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1>Empowering Alumni Connections for Success</h1>
+      <p>Join the <span>Alumni Network</span> and relive your college days while shaping the future of tomorrow.</p>
+      <div class="hero-buttons">
+        <a href="#" class="hero-btn primary">Join Now</a>
+        <a href="#" class="hero-btn secondary">View Events</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Optional JS for mobile toggle -->
+  <script>
+    const toggle = document.getElementById('menu-toggle');
+    const nav = document.querySelector('.nav-links');
+    toggle.addEventListener('click', () => {
+    nav.classList.toggle('active');
+    });
+  </script>
+
+</body>
+</html>

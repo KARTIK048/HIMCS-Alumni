@@ -1,0 +1,684 @@
+/* --- Basic Reset --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #0d1117; /* Dark background */
+  color: #fff;
+}
+
+.logo{
+  display: flex;
+  align-items: center;
+  gap: 10px; /* space between logo and text */
+}
+
+.logo-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.logo-link:hover .img {
+  transform: scale(1.1);
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.logo img {
+  height: 80px;
+  width: 80px;
+}
+/* --- Navbar Container --- */
+.navbar {
+  width: 100%;
+  background-color: #161b22;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 60px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.6);
+}
+
+/* --- Logo --- */
+.logo h2 {
+  color: #f5f5f5;
+  letter-spacing: 1px;
+  font-weight: 600;
+}
+
+/* --- Navigation Links --- */
+.nav-links {
+  display: flex;
+  gap: 25px;
+  align-items: center;
+}
+
+.nav-links a {
+  color: #c9d1d9;
+  text-decoration: none;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.nav-links a:hover {
+  color: #58a6ff;
+}
+
+/* --- Buttons --- */
+.btn {
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.btn.login {
+  border: 1px solid #58a6ff;
+  color: #58a6ff;
+}
+
+.btn.login:hover {
+  background-color: #58a6ff;
+  color: #fff;
+}
+
+.btn.register {
+  background-color: #238636;
+  color: #fff;
+}
+
+.btn.register:hover {
+  background-color: #2ea043;
+}
+
+/* --- Mobile Menu --- */
+.menu-toggle {
+  display: none;
+  font-size: 26px;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    background-color: #161b22;
+    position: absolute;
+    top: 70px;
+    right: 0;
+    width: 100%;
+    text-align: center;
+    padding: 20px 0;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .navbar {
+    padding: 15px 30px;
+  }
+}
+
+/* --- Hero Section --- */
+.hero {
+  position: relative;
+  height: 100vh;
+  background: url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1') center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+  margin-top: 70px; /* offset for fixed header */
+}
+
+.hero {
+  background: url('himcscollege.jpg') no-repeat center center/cover; 
+  text-align: center;
+  /* padding: 120px 20px; */
+  color: white;
+  min-height: 90vh;
+  display: flex;
+  justify-content: center;
+  justify-content: center;
+} 
+
+
+.hero-content {
+  background: rgba(0, 0, 0, 0.6);  /* semi-transparent black box */
+  padding: 60px 40px;
+  border-radius: 10px;
+  max-width: 900px;
+  width: 90%;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.hero-content h1 {
+  font-size: 2.8rem;
+  margin-bottom: 20px;
+  font-weight: 600;
+  color: #f0f6fc;
+}
+
+.hero-content p {
+  font-size: 1.1rem;
+  color: #c9d1d9;
+  margin-bottom: 30px;
+  line-height: 1.6;
+}
+
+.hero-content p span {
+  color: #58a6ff;
+  font-weight: 600;
+}
+
+/* --- Buttons --- */
+.hero-buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+.hero-btn {
+  padding: 12px 28px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.hero-btn.primary {
+  background-color: #238636;
+  color: #fff;
+}
+
+.hero-btn.primary:hover {
+  background-color: #2ea043;
+  transform: translateY(-3px);
+}
+
+.hero-btn.secondary {
+  border: 2px solid #58a6ff;
+  color: #58a6ff;
+}
+
+.hero-btn.secondary:hover {
+  background-color: #58a6ff;
+  color: #fff;
+  transform: translateY(-3px);
+}
+
+/* --- Animation --- */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 768px) {
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+
+  .hero-content p {
+    font-size: 1rem;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    gap: 15px;
+  }
+}
+
+.hero h1 {
+  font-size: 2.8rem;
+  margin-bottom: 15px;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  color: #ccc;
+  max-width: 700px;
+  margin: 0 auto 30px;
+}
+
+.hero .link {
+  color: #58a6ff;
+  text-decoration: none;
+}
+
+.hero .link:hover {
+  text-decoration: underline;
+}
+
+/* Buttons inside hero */
+.hero-buttons .btn {
+  padding: 12px 25px;
+  border-radius: 30px;
+  font-weight: 600;
+  text-decoration: none;
+  margin: 0 10px;
+  transition: all 0.3s ease;
+}
+
+.hero-buttons .join {
+  background-color: #238636;
+  color: #fff;
+}
+
+.hero-buttons .join:hover {
+  background-color: #2ea043;
+}
+
+.hero-buttons .view {
+  border: 2px solid #58a6ff;
+  color: #58a6ff;
+}
+
+.hero-buttons .view:hover {
+  background-color: #58a6ff;
+  color: #fff;
+}
+
+.hero {
+  position: relative;
+  background: url('himcscollege.jpg') no-repeat center center/cover;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5); /* dark overlay */
+}
+
+.hero * {
+  position: relative; /* keeps text above overlay */
+}
+
+/* ===== LOGIN PAGE ===== */
+
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6); /* dark overlay */
+}
+
+.login-box {
+  position: relative;
+  background: rgba(0, 0, 0, 0.75);
+  padding: 50px 40px;
+  border-radius: 15px;
+  max-width: 400px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.login-box h2 {
+  color: white;
+  margin-bottom: 10px;
+  font-size: 2rem;
+}
+
+.login-box p {
+  color: #bbb;
+  margin-bottom: 30px;
+}
+
+.login-form input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 30px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  background: #1f2937;
+  color: white;
+  font-size: 1rem;
+}
+
+.login-form input::placeholder {
+  color: #aaa;
+}
+
+.btn.submit {
+  width: 100%;
+  background-color: #238636;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.btn.submit:hover {
+  background-color: #2ea043;
+}
+
+.register-link {
+  margin-bottom: 15px;
+  color: #aaa;
+}
+
+.register-link a {
+  color: #58a6ff;
+  text-decoration: none;
+}
+
+.register-link a:hover {
+  text-decoration: underline;
+}
+
+/* ===== REGISTER PAGE ===== */
+.register-section {
+  background: url('hero-bg.jpg') no-repeat center center/cover;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.register-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.register-box {
+  position: relative;
+  background: rgba(0, 0, 0, 0.75);
+  padding: 50px 40px;
+  border-radius: 15px;
+  max-width: 450px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.register-box h2 {
+  color: white;
+  margin-bottom: 10px;
+  font-size: 2rem;
+}
+
+.register-box p {
+  color: #bbb;
+  margin-bottom: 30px;
+}
+
+.register-form input {
+  width: 100%;
+  padding: 12px;
+  margin: 12px 0px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  background: #1f2937;
+  color: white;
+  font-size: 1rem;
+}
+
+.register-form input::placeholder {
+  color: #aaa;
+}
+
+.btn.submit {
+  width: 100%;
+  background-color: #238636;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.btn.submit:hover {
+  background-color: #2ea043;
+}
+
+.register-link {
+  margin-top: 15px;
+  color: #aaa;
+}
+
+.register-link a {
+  color: #58a6ff;
+  text-decoration: none;
+}
+
+.register-link a:hover {
+  text-decoration: underline;
+}
+
+
+/* ===== DASHBOARD PAGE ===== */
+.dashboard-section {
+  background: url('himcscollege.jpg') no-repeat center center/cover;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.dashboard-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.dashboard-box {
+  position: relative;
+  text-align: center;
+  color: white;
+  max-width: 1000px;
+  padding: 40px;
+}
+
+.dashboard-box h2 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.dashboard-box p {
+  color: #ccc;
+  font-size: 1.1rem;
+  margin-bottom: 40px;
+}
+
+.dashboard-cards {
+   display: flex;
+  justify-content: center;   /* Centers cards horizontally */
+  align-items: stretch;      /* Makes cards the same height */
+  gap: 30px;                 /* Space between cards */
+  margin-top: 50px;
+}
+
+.card {
+  background: rgba(31, 41, 55, 0.9);
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+}
+
+.card h3 {
+  color: #58a6ff;
+  margin-bottom: 15px;
+}
+
+.card p {
+  color: #bbb;
+  margin-bottom: 10px;
+}
+
+.card a {
+  display: inline-block;
+  background-color: #28a745;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 6px;
+  transition: 0.3s;
+}
+
+.card-btn {
+  background: #238636;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.card-btn:hover {
+  background: #2ea043;
+}
+
+@media (max-width: 768px) {
+  .dashboard {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card {
+    width: 80%; /* Full width with margin */
+  }
+}
+
+@media (max-width: 992px) {
+  .dashboard {
+    gap: 20px;
+  }
+
+  .card {
+    width: 45%; /* Two cards per row */
+  }
+}
+/* Very Small Screens (less than 480px) */
+@media (max-width: 480px) {
+  .card {
+    width: 90%;
+    padding: 20px;
+  }
+
+  .card h3 {
+    font-size: 1.1rem;
+  }
+
+  .card p {
+    font-size: 14px;
+  }
+}
+
+/* Logout Button */
+.btn.logout {
+  background: #d32f2f;
+  padding: 10px 20px;
+  border-radius: 8px;
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.btn.logout:hover {
+  background: #f44336;
+}
+
+
+/* General page layout */
+/* About Section */
+
+
+ .hero h2 {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+}
+
+.hero p {
+  max-width: 800px;
+  margin: 10px auto;
+  color: #c5c6ca;
+  line-height: 1.7;
+} 
+
+/* Contact Section */
+/* .hero {
+  padding: 100px 10%;
+  text-align: center;
+} */
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-width: 500px;
+  margin: 40px auto;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  background-color: #1a1e25;
+  color: #fff;
+}
+
+.contact-form button {
+  border: none;
+  cursor: pointer;
+}
+
+.contact-info {
+  margin-top: 40px;
+  color: #c5c6ca;
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #13171f;
+  color: #aaa;
+  font-size: 14px;
+}
+
