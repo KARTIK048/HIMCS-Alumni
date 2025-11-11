@@ -76,7 +76,7 @@ WSGI_APPLICATION = 'test1.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'kartik',  # Replace with your MySQL database name
+        'NAME': 'himcs_alumni',  # Replace with your MySQL database name
         'USER': 'root',      # Replace with your MySQL username
         'PASSWORD': '12345678@Ks', # Replace with your MySQL password
         'HOST': 'localhost',            # Or the IP address/hostname of your MySQL server

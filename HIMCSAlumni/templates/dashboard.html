@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  {% load static %}
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Alumni Dashboard | HIMCS Alumni</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="{% static 'style.css' %}">
 </head>
 <body>
 
@@ -12,13 +13,13 @@
   <header class="navbar">
     <div class="logo">
       <a href="index.html" class="logo-link">
-        <img src="WhatsApp_Image_2025-06-06_at_23.23.16_d3145ba0-removebg-preview.png" alt="College Logo">
+        <img src="{% static 'WhatsApp_Image_2025-06-06_at_23.23.16_d3145ba0-removebg-preview.png'%}" alt="College Logo">
       </a>
       <h1>HIMCS Alumni</h1>
     </div>
 
     <nav class="nav-links">
-      <a href="index.html">Home</a>
+      <a href="/index">Home</a>
       <a href="#">Events</a>
       <a href="#">Gallery</a>
       <a href="#">News</a>
@@ -26,7 +27,7 @@
     </nav>
 
     <div class="buttons">
-      <a href="login.html" class="btn logout">Logout</a>
+      <a href="/login" class="btn logout">Logout</a>
     </div>
   </header>
 

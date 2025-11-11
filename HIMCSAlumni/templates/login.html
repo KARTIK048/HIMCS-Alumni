@@ -6,6 +6,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login | HIMCS Alumni</title>
   <link rel="stylesheet" href="{% static 'style.css' %}">
+  <style>
+    .popup {
+      background-color: #ff4d4d;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 8px;
+      text-align: center;
+      margin-bottom: 15px;
+      font-weight: 500;
+      animation: fadeIn 0.5s ease;
+      display: none;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
 </head>
 <body>
 
@@ -32,35 +50,23 @@
     <div class="login-box">
       <h2>Login</h2>
       <p>Sign in to the account</p>
-      <form action="#" method="post" class="login-form">
-        <input id="e1" type="text" placeholder="Email Address">
-        <input id="p1" type="password" placeholder="Password">
-        <button type="submit" class="btn submit" style="margin-bottom: 20px;" onclick="loginnn()">Login</button>
+       <div class="popup" id="errorPopup">Incorrect credentials!!</div>
+      <form action="#" method="POST" class="login-form">
+        {% csrf_token %}
+        <input name="email" type="email" placeholder="Email Address">
+        <input name="password" type="password" placeholder="Password">
+        <button type="submit" class="btn submit" style="margin-bottom: 20px;">Login</button>
         <p class="register-link">Don’t have an account? <a href="/register">Register</a></p>
       </form>  
     </div>
   </section>
-
   <script>
-  // Handle login form
-
-
-
-   
-  function loginnn()
-  {  
-    event.preventDefault();
-    let email = document.getElementById("e1").value;
-    let password = document.getElementById("p1").value;
-
-    if (email=== "abc123" && password === "123") {
-      //alert("Login successful!");
-      window.location.href = "dashboard.html";
-    } else {
-      alert("Invalid email or password!");
+    // Show popup if it exists
+    const popup = document.getElementById('errorPopup');
+    if (popup) {
+      popup.style.display = 'block';
+      setTimeout(() => popup.style.display = 'none', 3000); // hide after 3s
     }
-  }
-</script>
-
+  </script>
 </body>
 </html>
