@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo Gallery - HIMCS Alumni Portal</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="container">
+            <a href="{% url 'index' %}" class="logo">
+                <img src="{% static 'logo.png' %}" alt="HIMCS Logo">
+                HIMCS Alumni
+            </a>
+            <div class="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-links">
+                <li><a href="{% url 'index' %}">Home</a></li>
+                <li><a href="{% url 'about' %}">About</a></li>
+                <li><a href="{% url 'gallery' %}" class="active">Gallery</a></li>
+                <li><a href="{% url 'directory' %}">Directory</a></li>
+                <li><a href="{% url 'contact' %}">Contact</a></li>
+                <li><a href="{% url 'login' %}" class="btn btn-outline">Login</a></li>
+                <li><a href="{% url 'register' %}" class="btn btn-primary">Register</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="page-header"
+        style="background-color: var(--primary-color); color: white; padding: 4rem 0; text-align: center;">
+        <div class="container animate-on-scroll">
+            <h1>Photo Gallery</h1>
+            <p>Relive the memories</p>
+        </div>
+    </header>
+
+    <!-- Gallery Section -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="gallery-grid animate-on-scroll">
+                <div class="gallery-item">
+                    <img src="{% static '6.jpg' %}" alt="Alumni Reunion">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="{% static '5.jpg' %}" alt="Graduation Day">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="{% static '14.jpg' %}" alt="Campus Event">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="{% static '13.jpg' %}" alt="Workshop">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="{% static '12.jpg' %}" alt="Sports Day">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="{% static '11.jpg' %}" alt="Cultural Fest">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="{% static 'gallery-6.png' %}" alt="Cultural Fest">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="{% static 'gallery-1.jpg' %}" alt="Cultural Fest">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+            </div>1
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <!-- HIMCS Alumni Section -->
+                <div class="footer-logo">
+                    <h3>HIMCS Alumni</h3>
+                    <p style="opacity: 0.8; font-size: 0.9rem; margin-bottom: 1.5rem;">
+                        Building bridges between the past, present, and future of our institution.
+                    </p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+
+                <!-- Quick Links Section -->
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="{% url 'about' %}">About Us</a></li>
+                        <li><a href="{% url 'gallery' %}">Events</a></li>
+                        <li><a href="{% url 'directory' %}">Directory</a></li>
+                        <li><a href="{% url 'contact' %}">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info Section -->
+                <div class="footer-contact">
+                    <h4>Contact Info</h4>
+                    <ul style="opacity: 0.8; font-size: 0.9rem;">
+                        <li><i class="fas fa-map-marker-alt"></i> HIMCS Campus, Agra</li>
+                        <li><i class="fas fa-envelope"></i> alumni@himcs.edu</li>
+                        <li><i class="fas fa-phone"></i> +91 123 456 7890</li>
+                    </ul>
+                </div>
+
+                <!-- Newsletter Section -->
+                <div class="footer-newsletter">
+                    <h4>Newsletter</h4>
+                    <p style="opacity: 0.8; font-size: 0.9rem; margin-bottom: 1rem;">
+                        Stay updated with latest news
+                    </p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your email" required>
+                        <button type="submit" class="btn btn-primary">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 HIMCS Alumni. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="lightbox">
+        <span class="close-lightbox">&times;</span>
+        <img class="lightbox-content" id="lightbox-img">
+        <div id="lightbox-caption"></div>
+    </div>
+
+    <script src="{% static 'script.js' %}"></script>
+</body>
+
+</html>

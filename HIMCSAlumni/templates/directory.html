@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alumni Directory - HIMCS Alumni Portal</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="container">
+            <a href="{% url 'index' %}" class="logo">
+                <img src="{% static 'logo.png' %}" alt="HIMCS Logo">
+                HIMCS Alumni
+            </a>
+            <div class="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-links">
+                <li><a href="{% url 'index' %}">Home</a></li>
+                <li><a href="{% url 'about' %}">About</a></li>
+                <li><a href="{% url 'gallery' %}">Gallery</a></li>
+                <li><a href="{% url 'directory' %}" class="active">Directory</a></li>
+                <li><a href="{% url 'contact' %}">Contact</a></li>
+                <li><a href="{% url 'login' %}" class="btn btn-outline">Login</a></li>
+                <li><a href="{% url 'register' %}" class="btn btn-primary">Register</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="page-header"
+        style="background-color: var(--primary-color); color: white; padding: 4rem 0; text-align: center;">
+        <div class="container animate-on-scroll">
+            <h1>Alumni Directory</h1>
+            <p>Find and connect with fellow graduates</p>
+        </div>
+    </header>
+
+    <!-- Search Section -->
+    <section class="section-padding" style="padding-bottom: 0;">
+        <div class="container">
+            <div class="directory-search-bar animate-on-scroll">
+                <div class="search-input-wrapper">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" id="directorySearch"
+                        placeholder="Search by name, batch year, position, or company...">
+                    <button class="clear-search-btn" id="clearSearchBtn" style="display: none;">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div id="searchResults" class="search-results-info"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Directory Grid -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="directory-grid animate-on-scroll" id="directoryGrid">
+
+                <!-- Card 1 -->
+                <div class="alumni-card" data-name="Manish Verma" data-year="2015" data-position="Senior Developer"
+                    data-company="Google">
+                    <img src="{% static '1.jpeg' %}" alt="Alumni" class="alumni-img">
+                    <div class="alumni-info">
+                        <h3>Manish Verma</h3>
+                        <p>Batch - 2025</p>
+                        <p>Senior Developer at Google</p>
+                        <div class="alumni-social">
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="alumni-card" data-name="Hifza Naaz" data-year="2025" data-position="Product Manager"
+                    data-company="Microsoft">
+                    <img src="{% static '2.jpeg' %}" alt="Alumni" class="alumni-img">
+                    <div class="alumni-info">
+                        <h3>Hifza Naaz</h3>
+                        <p>Batch - 2025</p>
+                        <p>Product Manager at Microsoft</p>
+                        <div class="alumni-social">
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="alumni-card" data-name="Devashish Prasad" data-year="2025" data-position="Founder"
+                    data-company="TechStart">
+                    <img src="{% static '3.jpeg' %}" alt="Alumni" class="alumni-img">
+                    <div class="alumni-info">
+                        <h3>Devashish Prasad</h3>
+                        <p>Batch - 2025</p>
+                        <p>Founder at TechStart</p>
+                        <div class="alumni-social">
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="alumni-card" data-name="Alisha Ansari" data-year="2025" data-position="UX Designer"
+                    data-company="Amazon">
+                    <img src="{% static '4.jpeg' %}" alt="Alumni" class="alumni-img">
+                    <div class="alumni-info">
+                        <h3>Alisha Ansari</h3>
+                        <p>Batch - 2025</p>
+                        <p>UX Designer at Amazon</p>
+                        <div class="alumni-social">
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <!-- HIMCS Alumni Section -->
+                <div class="footer-logo">
+                    <h3>HIMCS Alumni</h3>
+                    <p style="opacity: 0.8; font-size: 0.9rem; margin-bottom: 1.5rem;">
+                        Building bridges between the past, present, and future of our institution.
+                    </p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+
+                <!-- Quick Links Section -->
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="{% url 'about' %}">About Us</a></li>
+                        <li><a href="{% url 'gallery' %}">Events</a></li>
+                        <li><a href="{% url 'directory' %}">Directory</a></li>
+                        <li><a href="{% url 'contact' %}">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info Section -->
+                <div class="footer-contact">
+                    <h4>Contact Info</h4>
+                    <ul style="opacity: 0.8; font-size: 0.9rem;">
+                        <li><i class="fas fa-map-marker-alt"></i> HIMCS Campus, Agra</li>
+                        <li><i class="fas fa-envelope"></i> alumni@himcs.edu</li>
+                        <li><i class="fas fa-phone"></i> +91 123 456 7890</li>
+                    </ul>
+                </div>
+
+                <!-- Newsletter Section -->
+                <div class="footer-newsletter">
+                    <h4>Newsletter</h4>
+                    <p style="opacity: 0.8; font-size: 0.9rem; margin-bottom: 1rem;">
+                        Stay updated with latest news
+                    </p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your email" required>
+                        <button type="submit" class="btn btn-primary">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 HIMCS Alumni. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="{% static 'script.js' %}"></script>
+</body>
+
+</html>

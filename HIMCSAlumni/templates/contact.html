@@ -1,59 +1,170 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact | HIMCS Alumni</title>
-  <link rel="stylesheet" href="style.css">
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - HIMCS Alumni Portal</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
+
 <body>
-  <!-- Navbar -->
-  <header class="navbar">
-    <div class="logo">
-      <img src="WhatsApp_Image_2025-06-06_at_23.23.16_d3145ba0-removebg-preview.png" alt="HIMCS Logo">
-      <h1>HIMCS Alumni</h1>
-    </div>
-    <nav class="nav-links">
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="course.html">Courses</a>
-      <a href="gallery.html">Gallery</a>
-      <a href="contact.html">Contact</a>
-      <a href="login.html" class="btn login">Login</a>
-      <a href="register.html" class="btn register">Register</a>
+
+    <nav class="navbar">
+        <div class="container">
+            <a href="{% url 'index' %}" class="logo">
+                <img src="{% static 'logo.png' %}" alt="HIMCS Logo">
+                HIMCS Alumni
+            </a>
+            <div class="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-links">
+                <li><a href="{% url 'index' %}">Home</a></li>
+                <li><a href="{% url 'about' %}">About</a></li>
+                <li><a href="{% url 'gallery' %}">Gallery</a></li>
+                <li><a href="{% url 'directory' %}">Directory</a></li>
+                <li><a href="{% url 'contact' %}" class="active">Contact</a></li>
+                <li><a href="{% url 'login' %}" class="btn btn-outline">Login</a></li>
+                <li><a href="{% url 'register' %}" class="btn btn-primary">Register</a></li>
+            </ul>
+        </div>
     </nav>
 
-    <!-- Mobile Menu Icon -->
-    <div class="menu-toggle" id="menu-toggle">
-      ☰
-    </div>
-  </header>
+    <!-- Page Header -->
+    <header class="page-header"
+        style="background-color: var(--primary-color); color: white; padding: 4rem 0; text-align: center;">
+        <div class="container animate-on-scroll">
+            <h1>Contact Us</h1>
+            <p>We'd love to hear from you</p>
+        </div>
+    </header>
 
-  <!-- Contact Section -->
-  <section class="hero">
-    <div class="contact-container">
-      <h2>Get in Touch</h2>
-      <p>We’d love to hear from you! Whether you have questions, suggestions, or want to collaborate, feel free to contact us.</p>
+    <!-- Contact Section -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="contact-wrapper"
+                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 4rem;">
 
-      <form class="contact-form">
-        <input type="text" placeholder="Your Name" required>
-        <input type="email" placeholder="Your Email" required>
-        <textarea placeholder="Your Message" rows="5" required></textarea>
-        <button type="submit" class=" btn submit">Send Message</button>
-      </form>
+                <!-- Contact Info -->
+                <div class="contact-info animate-on-scroll">
+                    <h2>Get in Touch</h2>
+                    <p style="margin-bottom: 2rem;">Have questions or suggestions? Reach out to us using the form or the
+                        details below.</p>
 
-      <div class="contact-info">
-        <h3>Contact Details</h3>
-        <p><strong>Address:</strong> Hindustan Institute of Management & Computer Studies, Mathura</p>
-        <p><strong>Email:</strong> alumni@himcs.edu.in</p>
-        <p><strong>Phone:</strong> +91 98765 43210</p>
-      </div>
-    </div>
-  </section>
+                    <div class="info-item" style="display: flex; gap: 1rem; margin-bottom: 1.5rem;">
+                        <i class="fas fa-map-marker-alt"
+                            style="color: var(--secondary-color); font-size: 1.2rem; margin-top: 5px;"></i>
+                        <div>
+                            <h4>Address</h4>
+                            <p>Hindustan Institute of Management and Computer Studies,<br>Farah, Mathura, Agra - 281122
+                            </p>
+                        </div>
+                    </div>
 
-  <!-- Footer -->
-  <footer>
-    <p>© 2025 HIMCS Alumni Network | All Rights Reserved</p>
-  </footer>
+                    <div class="info-item" style="display: flex; gap: 1rem; margin-bottom: 1.5rem;">
+                        <i class="fas fa-envelope"
+                            style="color: var(--secondary-color); font-size: 1.2rem; margin-top: 5px;"></i>
+                        <div>
+                            <h4>Email</h4>
+                            <p>alumni@himcs.edu</p>
+                        </div>
+                    </div>
+
+                    <div class="info-item" style="display: flex; gap: 1rem; margin-bottom: 1.5rem;">
+                        <i class="fas fa-phone"
+                            style="color: var(--secondary-color); font-size: 1.2rem; margin-top: 5px;"></i>
+                        <div>
+                            <h4>Phone</h4>
+                            <p>+91 123 456 7890</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="contact-form animate-on-scroll">
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" placeholder="Your Name">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" placeholder="Your Email">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" rows="5" placeholder="Your Message"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <!-- HIMCS Alumni Section -->
+                <div class="footer-logo">
+                    <h3>HIMCS Alumni</h3>
+                    <p style="opacity: 0.8; font-size: 0.9rem; margin-bottom: 1.5rem;">
+                        Building bridges between the past, present, and future of our institution.
+                    </p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+
+                <!-- Quick Links Section -->
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="{% url 'about' %}">About Us</a></li>
+                        <li><a href="{% url 'gallery' %}">Events</a></li>
+                        <li><a href="{% url 'directory' %}">Directory</a></li>
+                        <li><a href="{% url 'contact' %}">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info Section -->
+                <div class="footer-contact">
+                    <h4>Contact Info</h4>
+                    <ul style="opacity: 0.8; font-size: 0.9rem;">
+                        <li><i class="fas fa-map-marker-alt"></i> HIMCS Campus, Agra</li>
+                        <li><i class="fas fa-envelope"></i> alumni@himcs.edu</li>
+                        <li><i class="fas fa-phone"></i> +91 123 456 7890</li>
+                    </ul>
+                </div>
+
+                <!-- Newsletter Section -->
+                <div class="footer-newsletter">
+                    <h4>Newsletter</h4>
+                    <p style="opacity: 0.8; font-size: 0.9rem; margin-bottom: 1rem;">
+                        Stay updated with latest news
+                    </p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your email" required>
+                        <button type="submit" class="btn btn-primary">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 HIMCS Alumni. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="{% static 'script.js' %}"></script>
 </body>
+
 </html>

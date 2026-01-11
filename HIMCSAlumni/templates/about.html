@@ -1,61 +1,170 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-   {% load static %}
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About | HIMCS Alumni</title>
-  <link rel="stylesheet" href="{% static 'style.css' %}">
-</head>
-<body>
- <!-- Header Section -->
-  <header class="navbar">
-    <div class="logo">
-         <a href="index.html" class="logo-link">
-           <img src="{% static 'WhatsApp_Image_2025-06-06_at_23.23.16_d3145ba0-removebg-preview.png'%}" alt="" > </a>
-      <h2>HIMCS Alumni</h2>
-    </div>
 
-    <!-- Navigation Links -->
-    <nav class="nav-links">
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="#">Courses</a>
-      <a href="#">Gallery</a>
-      <a href="contact.html">Contact</a>
-      <a href="login.html" class="btn login">Login</a>
-      <a href="register.html" class="btn register">Register</a>
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - HIMCS Alumni Portal</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="container">
+            <a href="{% url 'index' %}" class="logo">
+                <img src="{% static 'logo.png' %}" alt="HIMCS Logo">
+                HIMCS Alumni
+            </a>
+            <div class="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-links">
+                <li><a href="{% url 'index' %}">Home</a></li>
+                <li><a href="{% url 'about' %}" class="active">About</a></li>
+                <li><a href="{% url 'gallery' %}">Gallery</a></li>
+                <li><a href="{% url 'directory' %}">Directory</a></li>
+                <li><a href="{% url 'contact' %}">Contact</a></li>
+                <li><a href="{% url 'login' %}" class="btn btn-outline">Login</a></li>
+                <li><a href="{% url 'register' %}" class="btn btn-primary">Register</a></li>
+            </ul>
+        </div>
     </nav>
 
-    <!-- Mobile Menu Icon -->
-    <div class="menu-toggle" id="menu-toggle">
-      ☰
-    </div>
-  </header>
+    <!-- Page Header -->
+    <!-- Page Header -->
+    <header class="page-header"
+        style="background-color: var(--primary-color); color: white; padding: 4rem 0; text-align: center;">
+        <div class="container animate-on-scroll">
+            <h1>About Us</h1>
+            <p>Our History, Mission, and Vision</p>
+        </div>
+    </header>
 
-  <!-- About Section -->
-  <section class="hero">
-    <div class="about-container">
-      <h2>About Us</h2>
-      <p>
-        The <strong>HIMCS Alumni Association</strong> is a vibrant community connecting graduates from the 
-        Hindustan Institute of Management and Computer Studies. Our mission is to foster lifelong 
-        connections among alumni and between alumni and the institution.
-      </p>
-      <p>
-        Through events, mentorship programs, and networking opportunities, we aim to empower 
-        our members and create meaningful collaborations that benefit students, alumni, and society.
-      </p>
-      <p>
-        Whether you graduated recently or decades ago, you are an essential part of the HIMCS legacy. 
-        Let’s continue building bridges and celebrating the success of our alumni family.
-      </p>
-    </div>
-  </section>
+    <!-- About Content -->
+    <section class="section-padding">
+        <div class="container">
 
-  <!-- Footer -->
-  <footer>
-    <p>© 2025 HIMCS Alumni Network | All Rights Reserved</p>
-  </footer>
+            <div class="about-grid-section animate-on-scroll">
+                <div class="about-text">
+                    <h2>About HIMCS</h2>
+                    <p>Hindustan Institute of Management and Computer Studies is approved by AICTE, New Delhi, and
+                        affiliated to Dr. A.P.J Abdul Kalam Technical University, Lucknow. It imparts quality education
+                        in the field of management and IT to meet the growing needs of industry and in turn society. The
+                        Institute, a constituent unit of SGI, born in 1997 and housed in a modern building built on an
+                        area of 29 acres located between Agra and Mathura on NH–2.</p>
+                    <br>
+                    <p>The Institute has responded to the challenges implicit in its mission and vision statements and
+                        has established excellent credentials both in terms of the quality of the education and the
+                        competencies of its faculty to sustain and further improve the level of excellence.</p>
+                </div>
+                <div class="about-image">
+                    <img src="{% static 'himcscollege.jpg' %}" alt="HIMCS College Building">
+                </div>
+            </div>
+
+            <div class="about-content animate-on-scroll">
+                <p>The Institute believes that the central thesis of globalization is based on the premise that modern
+                    organization in any field including education can no longer function as independent entities
+                    unaffected by events and trends elsewhere in the world. The logic of technological advances and free
+                    flow of information across borders has created a complex set of sensitivity to global trend,
+                    continuous learning and capacity to management diversity. The institute’s teaching learning
+                    processes conform to this imperative.</p>
+                <br>
+                <p>The institute offers Master of Business Administration and Master of Computer Applications course.
+                    Institute aims to provide career oriented quality education and training in professional
+                    disciplines, to stimulate environment of independent thinking and creativity in the institute
+                    campus.</p>
+                <br>
+
+                <h2>Our Vision</h2>
+                <p><strong>Premier institute in the field of management and IT.</strong></p>
+                <p>To become one of the premier institutes in the field of management and IT by creating new frontiers
+                    of knowledge, research and development for its excellence in academics and its valuable contribution
+                    to industry and society. To achieve a place amongst top level global academic and professional
+                    institutions by providing globally acceptable standards of management and IT education thereby
+                    creating an environment of sharing, dissemination and complete application of knowledge amongst all
+                    stakeholders of the institution and establishing high levels of industry-academic interface.</p>
+                <br>
+
+                <h2>Our Mission</h2>
+                <p>To provide career oriented quality education and training in professional disciplines.</p>
+                <ul class="about-list">
+                    <li>To provide conducive environment stimulating creativity and independent thinking.</li>
+                    <li>To induce relevant competencies creating multi-skilled managers and IT professionals for
+                        industry.</li>
+                    <li>To enlarge and extend professional horizon by enrichment of education & exposure.</li>
+                    <li>To provide global level standards in management and IT education by training professionals to
+                        become fully employable.</li>
+                    <li>To strengthen the bond between industry and institution by appropriate and adequate interaction.
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <!-- HIMCS Alumni Section -->
+                <div class="footer-logo">
+                    <h3>HIMCS Alumni</h3>
+                    <p style="opacity: 0.8; font-size: 0.9rem; margin-bottom: 1.5rem;">
+                        Building bridges between the past, present, and future of our institution.
+                    </p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+
+                <!-- Quick Links Section -->
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="{% url 'about' %}">About Us</a></li>
+                        <li><a href="{% url 'gallery' %}">Events</a></li>
+                        <li><a href="{% url 'directory' %}">Directory</a></li>
+                        <li><a href="{% url 'contact' %}">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info Section -->
+                <div class="footer-contact">
+                    <h4>Contact Info</h4>
+                    <ul style="opacity: 0.8; font-size: 0.9rem;">
+                        <li><i class="fas fa-map-marker-alt"></i> HIMCS Campus, Agra</li>
+                        <li><i class="fas fa-envelope"></i> alumni@himcs.edu</li>
+                        <li><i class="fas fa-phone"></i> +91 123 456 7890</li>
+                    </ul>
+                </div>
+
+                <!-- Newsletter Section -->
+                <div class="footer-newsletter">
+                    <h4>Newsletter</h4>
+                    <p style="opacity: 0.8; font-size: 0.9rem; margin-bottom: 1rem;">
+                        Stay updated with latest news
+                    </p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your email" required>
+                        <button type="submit" class="btn btn-primary">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 HIMCS Alumni. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="{% static 'script.js' %}"></script>
 </body>
+
 </html>

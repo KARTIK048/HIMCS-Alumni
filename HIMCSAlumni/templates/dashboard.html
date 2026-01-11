@@ -1,63 +1,565 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   {% load static %}
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Alumni Dashboard | HIMCS Alumni</title>
-  <link rel="stylesheet" href="{% static 'style.css' %}">
+  <title>HIMCS Alumni Dashboard</title>
+  <link rel="stylesheet" href="{% static 'dashboard.css' %}">
+  <!-- Icons -->
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
 </head>
+
 <body>
 
-  <!-- Navbar -->
-  <header class="navbar">
-    <div class="logo">
-      <a href="index.html" class="logo-link">
-        <img src="{% static 'WhatsApp_Image_2025-06-06_at_23.23.16_d3145ba0-removebg-preview.png'%}" alt="College Logo">
-      </a>
-      <h1>HIMCS Alumni</h1>
+  <!-- Sidebar -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <img src="{% static 'logo.png' %}" alt="HIMCS Logo" class="sidebar-logo">
+      <span class="sidebar-title">HIMCS Alumni</span>
     </div>
 
-    <nav class="nav-links">
-      <a href="/index">Home</a>
-      <a href="#">Events</a>
-      <a href="#">Gallery</a>
-      <a href="#">News</a>
-      <a href="#">Contact</a>
+    <nav class="sidebar-nav">
+      <ul class="nav-list">
+        <li class="nav-item active" data-section="dashboard">
+          <i class='bx bxs-dashboard nav-icon'></i>
+          <span>Dashboard</span>
+        </li>
+        <li class="nav-item" data-section="networking">
+          <i class='bx bxs-network-chart nav-icon'></i>
+          <span>Networking Hub</span>
+        </li>
+        <li class="nav-item" data-section="jobs">
+          <i class='bx bxs-briefcase nav-icon'></i>
+          <span>Job Portal</span>
+        </li>
+        <li class="nav-item" data-section="events">
+          <i class='bx bxs-calendar-event nav-icon'></i>
+          <span>Events</span>
+        </li>
+        <li class="nav-item" data-section="stories">
+          <i class='bx bxs-trophy nav-icon'></i>
+          <span>Success Stories</span>
+        </li>
+        <li class="nav-item" data-section="profile-settings">
+          <i class='bx bxs-user-detail nav-icon'></i>
+          <span>Profile Settings</span>
+        </li>
+        <li class="nav-item" data-section="feedback">
+          <i class='bx bxs-message-dots nav-icon'></i>
+          <span>Feedback</span>
+        </li>
+      </ul>
     </nav>
 
-    <div class="buttons">
-      <a href="/login" class="btn logout">Logout</a>
+    <div class="sidebar-footer">
+      <a href="{% url 'logout' %}" class="logout-btn"
+        style="text-decoration: none; display: flex; align-items: center; justify-content: center; width: 100%; height: 100%;">
+        <i class='bx bx-log-out'></i>
+        <span style="margin-left: 10px;">Logout</span>
+      </a>
     </div>
-  </header>
+  </aside>
 
-  <!-- Dashboard Section -->
-  <section class="dashboard-section">
-    <div class="dashboard-box">
-      <h2>Welcome Back, Alumni 🎓</h2>
-      <p>We’re excited to see you again! Here’s your personalized alumni dashboard.</p>
+  <!-- Main Content -->
+  <main class="main-content">
 
-      <div class="dashboard-cards">
-        <div class="card">
-          <h3>Upcoming Events</h3>
-          <p>Stay updated with reunions, guest lectures, and networking meetups.</p>
-          <a href="#" class="btn card-btn">View Events</a>
+    <!-- Mobile Header -->
+    <div class="top-bar">
+      <div class="logo-mobile">
+        <span class="sidebar-title" style="color: var(--text-main);">HIMCS Alumni</span>
+      </div>
+      <button class="btn btn-primary" id="mobile-menu-btn">
+        <i class='bx bx-menu'></i>
+      </button>
+    </div>
+
+    <!-- Dashboard Section -->
+    <section id="dashboard" class="section active">
+      <div class="welcome-banner new-banner">
+        <div class="banner-left">
+          <div class="banner-avatar">
+            <img src="{% static 'user.jpg' %}" alt="Profile">
+          </div>
+          <div class="banner-info">
+            <h2 style="font-size: 1.5rem; font-weight: 700; margin: 0; color: white;">{{ name }}</h2>
+            <p style="margin: 0; color: rgba(255,255,255,0.9);">Software Engineer at Microsoft</p>
+            <button id="banner-edit-profile"
+              style="background: none; border: none; color: #fbbf24; cursor: pointer; font-size: 0.9rem; display: flex; align-items: center; gap: 5px; padding: 0; margin-top: 5px;">
+              <i class='bx bx-edit'></i> Edit Profile
+            </button>
+          </div>
         </div>
-
-        <div class="card">
-          <h3>Alumni Network</h3>
-          <p>Connect with your batchmates and faculty across years.</p>
-          <a href="#" class="btn card-btn">Connect Now</a>
+        <div class="banner-center">
+          <h1>Welcome, <span style="color: #fbbf24;">{{ name }}!</span> 🎉</h1>
         </div>
-
-        <div class="card">
-          <h3>Career Opportunities</h3>
-          <p>Explore jobs shared by fellow alumni and corporate partners.</p>
-          <a href="#" class="btn card-btn">View Jobs</a>
+        <div class="banner-right" style="align-items: flex-end; font-size: 1rem;">
+          <p class="banner-email" style="font-size: 0.9rem; margin-bottom: 5px;"><i class='bx bx-envelope'></i>
+            {{ email }}</p>
+          <a href="#" class="banner-password" style="font-size: 0.9rem;"><i class='bx bx-key'></i> Change Password</a>
         </div>
       </div>
-    </div>
-  </section>
 
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon blue">
+            <i class='bx bxs-user-account'></i>
+          </div>
+          <div class="stat-info">
+            <h4>Total Alumni</h4>
+            <p>1,250+</p>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon green">
+            <i class='bx bxs-calendar-check'></i>
+          </div>
+          <div class="stat-info">
+            <h4>Upcoming Events</h4>
+            <p>3</p>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon orange">
+            <i class='bx bxs-briefcase-alt-2'></i>
+          </div>
+          <div class="stat-info">
+            <h4>New Jobs</h4>
+            <p>12</p>
+          </div>
+        </div>
+        <!-- Create Post Button Card -->
+        <div class="stat-card create-post-card" onclick="openPostModal()"
+          style="cursor: pointer; background: linear-gradient(135deg, #6366f1, #4f46e5); color: white; justify-content: center;">
+          <div class="stat-icon" style="background: rgba(255,255,255,0.2); color: white;">
+            <i class='bx bx-plus'></i>
+          </div>
+          <div class="stat-info">
+            <h4 style="color: rgba(255,255,255,0.9);">Host/Post</h4>
+            <p style="color: white; font-size: 1.2rem;">Create Event/Job</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Create Post Modal -->
+      <div id="postModal" class="modal">
+        <div class="modal-content">
+          <span class="close-modal" onclick="closePostModal()">&times;</span>
+          <h2 class="section-title" style="font-size: 1.5rem; margin-bottom: 20px;">Create New Post</h2>
+
+          <form id="createPostForm">
+            <div class="form-group">
+              <label class="form-label">Post Type</label>
+              <select class="form-input" id="postType" required onchange="toggleEventFields()">
+                <option value="job">Job Opportunity</option>
+                <option value="webinar">Webinar</option>
+                <option value="alumni-meet">Alumni Meet</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Title</label>
+              <input type="text" class="form-input" id="postTitle" placeholder="e.g. Senior Developer / Annual Meet"
+                required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" id="orgLabel">Company Name</label>
+              <input type="text" class="form-input" id="postOrg" placeholder="e.g. TechCorp" required>
+            </div>
+
+            <!-- Event Specific Fields -->
+            <div id="eventFields" style="display: none;">
+              <div class="form-grid">
+                <div class="form-group">
+                  <label class="form-label">Date</label>
+                  <input type="date" class="form-input" id="eventDate">
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Time</label>
+                  <input type="time" class="form-input" id="eventTime">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Location / Link</label>
+                <input type="text" class="form-input" id="eventLocation"
+                  placeholder="e.g. Google Meet Link or Campus Auditorium">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Description</label>
+              <textarea class="form-input" id="postDescription" rows="3" required
+                placeholder="Brief description..."></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width: 100%;">Post Now</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="content-grid">
+        <div class="main-column">
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Recent Activity</h3>
+              <a href="#" class="card-action">View All</a>
+            </div>
+            <div class="activity-list">
+              <div class="list-item">
+                <div class="item-icon">
+                  <i class='bx bx-calendar'></i>
+                </div>
+                <div class="item-content">
+                  <div class="item-title">Registered for Annual Meet</div>
+                  <div class="item-subtitle">You confirmed your attendance</div>
+                </div>
+                <div class="item-meta">2h ago</div>
+              </div>
+              <div class="list-item">
+                <div class="item-icon">
+                  <i class='bx bx-briefcase'></i>
+                </div>
+                <div class="item-content">
+                  <div class="item-title">New Job Posted</div>
+                  <div class="item-subtitle">Senior Developer at TechCorp</div>
+                </div>
+                <div class="item-meta">5h ago</div>
+              </div>
+              <div class="list-item">
+                <div class="item-icon">
+                  <i class='bx bx-user-plus'></i>
+                </div>
+                <div class="item-content">
+                  <div class="item-title">New Connection Request</div>
+                  <div class="item-subtitle">Rahul Sharma sent a request</div>
+                </div>
+                <div class="item-meta">1d ago</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Job Application Status Card -->
+          <div class="card" style="margin-top: 24px;">
+            <div class="card-header">
+              <h3 class="card-title">Job Application Status</h3>
+              <a href="#" class="card-action">View All</a>
+            </div>
+            <div class="table-responsive">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Company</th>
+                    <th>Role</th>
+                    <th>Date</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <div style="display: flex; align-items: center; gap: 10px;">
+                        <img src="https://ui-avatars.com/api/?name=Google&background=random"
+                          style="width: 24px; height: 24px; border-radius: 50%;">
+                        Google
+                      </div>
+                    </td>
+                    <td>Senior Engineer</td>
+                    <td>Oct 24, 2025</td>
+                    <td><span class="badge badge-warning">In Progress</span></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div style="display: flex; align-items: center; gap: 10px;">
+                        <img src="https://ui-avatars.com/api/?name=Microsoft&background=random"
+                          style="width: 24px; height: 24px; border-radius: 50%;">
+                        Microsoft
+                      </div>
+                    </td>
+                    <td>Product Manager</td>
+                    <td>Oct 20, 2025</td>
+                    <td><span class="badge badge-success">Interview</span></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div style="display: flex; align-items: center; gap: 10px;">
+                        <img src="https://ui-avatars.com/api/?name=Amazon&background=random"
+                          style="width: 24px; height: 24px; border-radius: 50%;">
+                        Amazon
+                      </div>
+                    </td>
+                    <td>SDE II</td>
+                    <td>Oct 15, 2025</td>
+                    <td><span class="badge badge-danger">Rejected</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Networking Section -->
+    <section id="networking" class="section">
+      <div class="section-header">
+        <h2 class="section-title">Networking Hub</h2>
+        <p class="section-subtitle">Connect with fellow alumni and expand your professional network.</p>
+      </div>
+
+      <!-- Search Bar -->
+      <div class="search-container">
+        <div class="search-bar">
+          <i class='bx bx-search search-icon'></i>
+          <input type="text" id="alumni-search" class="search-input"
+            placeholder="Search by name, role, company, or batch year...">
+          <button class="search-clear" id="search-clear" style="display: none;">
+            <i class='bx bx-x'></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="stats-grid" id="networking-grid">
+        <!-- Populated by JS -->
+      </div>
+
+      <!-- No Results Message -->
+      <div id="no-results" class="no-results" style="display: none;">
+        <i class='bx bx-search-alt-2'></i>
+        <h3>No alumni found</h3>
+        <p>Try adjusting your search terms</p>
+      </div>
+    </section>
+
+    <!-- Jobs Section -->
+    <section id="jobs" class="section">
+      <div class="section-header">
+        <h2 class="section-title">Job Portal</h2>
+        <p class="section-subtitle">Discover job opportunities posted by fellow alumni.</p>
+      </div>
+
+      <!-- Search Bar -->
+      <div class="search-container">
+        <div class="search-bar">
+          <i class='bx bx-search search-icon'></i>
+          <input type="text" id="job-search" class="search-input"
+            placeholder="Search jobs by title, company, or location...">
+          <button class="search-clear" id="job-search-clear" style="display: none;">
+            <i class='bx bx-x'></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="job-list" id="jobs-container">
+        <!-- Populated by JavaScript -->
+      </div>
+
+      <!-- No Results Message -->
+      <div id="no-jobs-results" class="no-results" style="display: none;">
+        <i class='bx bx-search-alt-2'></i>
+        <h3>No jobs found</h3>
+        <p>Try adjusting your search terms</p>
+      </div>
+    </section>
+
+    <!-- Events Section -->
+    <section id="events" class="section">
+      <div class="section-header">
+        <h2 class="section-title">Events & Reunions</h2>
+        <p class="section-subtitle">Don't miss out on upcoming gatherings.</p>
+      </div>
+      <div class="stats-grid" id="events-grid">
+        <!-- Populated by JS -->
+      </div>
+    </section>
+
+    <!-- Success Stories Section -->
+    <section id="stories" class="section">
+      <div class="section-header">
+        <h2 class="section-title">Success Stories</h2>
+        <p class="section-subtitle">Celebrating the achievements of our alumni.</p>
+      </div>
+      <div class="stats-grid">
+        <div class="card">
+          <img
+            src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+            alt="Story"
+            style="width: 100%; height: 200px; object-fit: cover; border-radius: 12px; margin-bottom: 16px;">
+          <h3 class="card-title">From HIMCS to Google</h3>
+          <p class="item-subtitle" style="margin-bottom: 12px;">Priya Singh, Class of 2018</p>
+          <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 16px;">Priya shares her journey
+            of
+            becoming a Senior Software Engineer at Google and how HIMCS helped her...</p>
+          <button class="btn btn-primary" style="width: 100%;">Read More</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Feedback Section -->
+    <section id="feedback" class="section">
+      <div class="section-header">
+        <h2 class="section-title">Feedback & Suggestions</h2>
+        <p class="section-subtitle">Help us improve your alumni experience. We value your input!</p>
+      </div>
+
+      <div class="feedback-grid">
+        <!-- Left Column: Feedback Form -->
+        <div class="card feedback-form-card">
+          <h3 class="card-title" style="margin-bottom: 24px;">Give Feedback</h3>
+          <form id="feedback-form">
+            <div class="form-group">
+              <label class="form-label">Feedback Type</label>
+              <div class="feedback-types">
+                <input type="radio" name="feedbackType" id="type-bug" value="bug" hidden>
+                <label for="type-bug" class="type-option"><i class='bx bx-bug'></i> Report Bug</label>
+
+                <input type="radio" name="feedbackType" id="type-feature" value="feature" hidden>
+                <label for="type-feature" class="type-option"><i class='bx bx-bulb'></i> Suggest Feature</label>
+
+                <input type="radio" name="feedbackType" id="type-praise" value="praise" hidden checked>
+                <label for="type-praise" class="type-option"><i class='bx bx-heart'></i> Appreciation</label>
+
+                <input type="radio" name="feedbackType" id="type-other" value="other" hidden>
+                <label for="type-other" class="type-option"><i class='bx bx-dots-horizontal-rounded'></i> Other</label>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Rate your experience</label>
+              <div class="star-rating">
+                <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="Excellent"></label>
+                <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="Good"></label>
+                <input type="radio" id="star3" name="rating" value="3" /><label for="star3" title="Average"></label>
+                <input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="Poor"></label>
+                <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="Terrible"></label>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="feedbackSubject">Subject</label>
+              <input type="text" id="feedbackSubject" class="form-input" placeholder="Brief summary of your feedback"
+                required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="feedbackMessage">Message</label>
+              <textarea id="feedbackMessage" class="form-textarea" rows="5"
+                placeholder="Tell us more about your experience... what did you like? what can be improved?"
+                required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary"
+              style="width: 100%; display: flex; justify-content: center; align-items: center; gap: 8px;">
+              <i class='bx bx-send'></i> Submit Feedback
+            </button>
+          </form>
+        </div>
+
+        <!-- Right Column: Recent Feedback / History -->
+        <div class="card feedback-history-card">
+          <div class="card-header">
+            <h3 class="card-title">Your Feedback History</h3>
+            <span class="badge badge-info" id="feedback-count">0 submissions</span>
+          </div>
+
+          <div class="feedback-list" id="feedback-history-container">
+            <!-- Populated by JS -->
+            <div class="empty-state">
+              <i class='bx bx-message-square-edit' style="font-size: 3rem; color: var(--border-color);"></i>
+              <p style="color: var(--text-muted); margin-top: 10px;">You haven't submitted any feedback yet.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Profile Settings Section -->
+    <section id="profile-settings" class="section">
+      <div class="section-header">
+        <h2 class="section-title">Profile Management</h2>
+        <p class="section-subtitle">Update your personal and professional information.</p>
+      </div>
+
+      <div class="profile-card">
+        <div class="profile-header">
+          <div class="profile-pic-container" style="position: relative;">
+            <img src="https://ui-avatars.com/api/?name=Anshul+Shukla&background=4f46e5&color=fff" alt="Profile"
+              class="profile-pic" id="settingsProfilePreview">
+            <button class="avatar-edit-btn" onclick="document.getElementById('settingsProfileInput').click()"
+              style="width: 30px; height: 30px; right: -5px; bottom: 0;">
+              <i class='bx bx-camera' style="font-size: 1.1rem;"></i>
+            </button>
+            <input type="file" id="settingsProfileInput" hidden accept="image/*">
+          </div>
+          <div class="profile-info">
+            <h2>{{ name }}</h2>
+            <p>Software Engineer at TechCorp</p>
+            <p>Class of 2022 | Computer Science</p>
+            <p>Location: India</p>
+          </div>
+        </div>
+
+        <form id="profile-form">
+          <div class="form-group">
+            <label class="form-label">Full Name</label>
+            <input type="text" class="form-input" value="{{ name }}" placeholder="Enter your full name">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Email</label>
+            <input type="email" class="form-input" value="{{ email }}" placeholder="Enter your email">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Graduation Year</label>
+            <input type="number" class="form-input" value="2022" placeholder="e.g., 2020">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Department</label>
+            <select class="form-input">
+              <option selected>Computer Science</option>
+              <option>Mechanical Engineering</option>
+              <option>Business Administration</option>
+              <option>Civil Engineering</option>
+              <option>Electronics</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Current Position</label>
+            <input type="text" class="form-input" value="Software Engineer" placeholder="Your current job title">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Company</label>
+            <input type="text" class="form-input" value="TechCorp" placeholder="Your current company">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Location</label>
+            <input type="text" class="form-input" value="India" placeholder="City, State/Country">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Bio</label>
+            <textarea class="form-textarea" rows="4"
+              placeholder="Tell us about yourself, your achievements, and interests...">Passionate software engineer with a love for building scalable web applications. Proud HIMCS alumnus.</textarea>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">LinkedIn Profile</label>
+            <input type="url" class="form-input" placeholder="https://linkedin.com/in/yourprofile">
+          </div>
+
+          <button type="submit" class="btn btn-primary">Update Profile</button>
+        </form>
+      </div>
+    </section>
+
+  </main>
+  <script src="{% static 'dashboard.js' %}"></script>
 </body>
+
 </html>
